@@ -78,6 +78,7 @@ describe("Console", function () {
             }
           },
           network_id: 666,
+          //todo: update for consistency
           provider: new Web3.providers.HttpProvider("http://localhost:666"),
           resolver: new Resolver(config)
         });
@@ -94,7 +95,8 @@ describe("Console", function () {
       });
 
       it("won't load any user-defined JS", async function () {
-        const result = await otherTruffleConsole.calculateTruffleAndUserGlobals();
+        const result =
+          await otherTruffleConsole.calculateTruffleAndUserGlobals();
         assert.equal(typeof result.bingBam, "undefined");
         assert.equal(typeof result.abraham, "undefined");
       });
@@ -122,7 +124,8 @@ describe("Console", function () {
       });
 
       it("won't let users clobber Truffle variables", async function () {
-        const result = await otherTruffleConsole.calculateTruffleAndUserGlobals();
+        const result =
+          await otherTruffleConsole.calculateTruffleAndUserGlobals();
         assert.notEqual(result.accounts, "0x666");
         assert.notEqual(result.web3, "fakeWeb3");
         assert.notEqual(result.interfaceAdapter, "fakeInterfaceAdapter");
@@ -151,7 +154,8 @@ describe("Console", function () {
           config.working_directory,
           "test/sources/userVariables.js"
         );
-        const result = await otherTruffleConsole.calculateTruffleAndUserGlobals();
+        const result =
+          await otherTruffleConsole.calculateTruffleAndUserGlobals();
         assert.equal(result.bingBam, "boom");
       });
 
@@ -160,7 +164,8 @@ describe("Console", function () {
           config.working_directory,
           "test/sources/userVariables.js"
         );
-        const result = await otherTruffleConsole.calculateTruffleAndUserGlobals();
+        const result =
+          await otherTruffleConsole.calculateTruffleAndUserGlobals();
         assert.equal(result.bingBam, "boom");
       });
 
@@ -173,7 +178,8 @@ describe("Console", function () {
           config.working_directory,
           "test/sources/userVariables.js"
         );
-        const result = await otherTruffleConsole.calculateTruffleAndUserGlobals();
+        const result =
+          await otherTruffleConsole.calculateTruffleAndUserGlobals();
         assert.equal(result.abraham, "lincoln");
         assert.notEqual(result.bingBam, "boom");
       });
