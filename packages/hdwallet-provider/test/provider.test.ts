@@ -28,7 +28,7 @@ describe("HD Wallet Provider", function () {
   });
 
   afterEach(() => {
-    web3.setProvider(new Web3.providers.HttpProvider("ws://localhost:8545"));
+    web3.setProvider(new Web3.providers.WebsocketProvider("ws://localhost:8545"));
     provider.engine.stop();
   });
 
