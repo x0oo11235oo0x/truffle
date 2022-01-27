@@ -69,6 +69,7 @@ module.exports = {
             clearTimeout(networkCheck);
             return resolve(true);
           } catch (error) {
+            console.log("error: %O", error);
             console.log(
               "> Something went wrong while attempting to connect to the " +
                 "network at " +
