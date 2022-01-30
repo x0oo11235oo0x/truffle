@@ -3,7 +3,7 @@ const Ganache = require("ganache");
 const Provider = require("../index");
 const Web3 = require("web3");
 
-describe("Provider", function() {
+describe("Provider", function () {
   let server;
   const port = 12345;
   const host = "127.0.0.1";
@@ -17,7 +17,7 @@ describe("Provider", function() {
         quiet: true
       }
     });
-    server.listen(port, function(err) {
+    server.listen(port, function (err) {
       assert.ifError(err);
       done();
     });
@@ -71,8 +71,12 @@ describe("Provider", function() {
       await Provider.testConnection({ provider });
       assert(false);
     } catch (error) {
-      const snippet = `Could not connect to your Ethereum client`;
-      if (error.message.includes(snippet)) {
+      const httpErrorSnippet = `Could not connect to your Ethereum client`;
+      const wsErrorSnippet = `connection not open on send()`;
+      if (
+        error.message.includes(httpErrorSnippet) ||
+        error.message.includes(wsErrorSnippet)
+      ) {
         assert(true);
       } else {
         assert.fail("There was an error testing the provider.");
@@ -94,7 +98,7 @@ describe("Provider", function() {
 
   it("accepts a function that returns a provider instance", async () => {
     const provider = Provider.create({
-      provider: function() {
+      provider: function () {
         return Ganache.provider();
       }
     });
