@@ -23,7 +23,9 @@ const port = 8545;
 beforeAll(async done => {
   server = Ganache.server({
     // note instamine must be set to eager (default) with vmErrorsOnRPCResponse enabled
-    vmErrorsOnRPCResponse: true
+    chain: {
+      vmErrorsOnRPCResponse: true
+    },
   });
   server.listen(port, done);
 });
