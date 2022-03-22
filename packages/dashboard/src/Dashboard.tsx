@@ -22,7 +22,7 @@ function Dashboard() {
   const [dashboardProviderRequests, setDashboardProviderRequests] = useState<
     DashboardProviderMessage[]
   >([]);
-
+  const [migrations, setMigrations] = useState<any[]>([]);
   const { chainId } = useWeb3React();
 
   useEffect(() => {
@@ -73,6 +73,8 @@ function Dashboard() {
     connectedSocket.send("ready");
 
     setSocket(connectedSocket);
+
+    setMigrations([{name:`1_initial_migration.js`, completed: true}, {name:`2_deploy_marketplace.js`, completed: false}]);
   };
 
   return (
@@ -93,6 +95,7 @@ function Dashboard() {
             socket={socket}
             requests={dashboardProviderRequests}
             setRequests={setDashboardProviderRequests}
+            migrations={migrations}
           />
           </>
       )}

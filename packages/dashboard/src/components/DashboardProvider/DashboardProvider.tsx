@@ -22,9 +22,10 @@ interface Props {
       | ((requests: DashboardProviderMessage[]) => DashboardProviderMessage[])
   ) => void;
   socket: WebSocket;
+  migrations: any;
 }
 
-function DashboardProvider({ paused, socket, requests, setRequests }: Props) {
+function DashboardProvider({ paused, socket, requests, setRequests, migrations }: Props) {
   const { account, library } = useWeb3React<providers.Web3Provider>();
 
   useEffect(() => {
@@ -68,8 +69,6 @@ function DashboardProvider({ paused, socket, requests, setRequests }: Props) {
             />
           ))
       : [];
-
-  const migrations: any[] = [{name:`1_initial_migration.js`, completed: true}, {name:`2_deploy_marketplace.js`, completed: false}];
 
   return (
     <div className="flex justify-center items-center py-20">
