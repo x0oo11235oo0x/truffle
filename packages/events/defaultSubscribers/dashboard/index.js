@@ -16,6 +16,17 @@ module.exports = {
     };
   },
   handlers: {
+    "migrate:start": [
+      async function (migrations) {
+        console.log(migrations);
+        await this.messageBus.sendAndAwait({
+          type: "migrate",
+          payload: {
+            message: [`1_abc.js`, `2_xyz.js`]
+          }
+        });
+      }
+    ],
     "compile:start": [
       async function () {
         await this.messageBus.sendAndAwait({

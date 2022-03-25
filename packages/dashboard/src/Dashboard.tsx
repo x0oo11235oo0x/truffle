@@ -5,6 +5,7 @@ import {
   isDashboardProviderMessage,
   isInvalidateMessage,
   isDebugMessage,
+  // isMigrateMessage,
   Message,
   base64ToJson
 } from "@truffle/dashboard-message-bus";
