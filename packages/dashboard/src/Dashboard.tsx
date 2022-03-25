@@ -11,7 +11,7 @@ import { useWeb3React } from "@web3-react/core";
 import { useEffect, useState } from "react";
 import { getPorts } from "./utils/utils";
 import Header from "./components/Header/Header";
-import SettingsIcon from "./components/common/SettingsIcon";
+import SettingsPopover from "./components/common/Popover";
 import DashboardProvider from "./components/DashboardProvider/DashboardProvider";
 import ConnectNetwork from "./components/ConnectNetwork";
 import ConfirmNetworkChanged from "./components/ConfirmNetworkChange";
@@ -95,7 +95,8 @@ function Dashboard() {
           setRequests={setDashboardProviderRequests}
         />
       )}
-      <SettingsIcon analyticsSet={true} />
+      {/* <SettingsIcon analyticsSet={true} /> */}
+      <SettingsPopover />
     </div>
   );
 }
