@@ -100,7 +100,6 @@ function Dashboard() {
           setRequests={setDashboardProviderRequests}
         />
       )}
-      {/* <SettingsIcon analyticsSet={true} /> */}
       <SettingsPopover />
     </div>
   );
