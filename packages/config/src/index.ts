@@ -7,6 +7,7 @@ import TruffleError from "@truffle/error";
 import originalRequire from "original-require";
 import { getInitialConfig, configProps } from "./configDefaults";
 import { EventManager } from "@truffle/events";
+import { resetMemoProvider } from "@truffle/provider";
 
 const DEFAULT_CONFIG_FILENAME = "truffle-config.js";
 const BACKUP_CONFIG_FILENAME = "truffle.js"; // old config filename
@@ -91,6 +92,10 @@ class TruffleConfig {
   }
 
   public with(obj: any): TruffleConfig {
+    //Shutdown the old provider if obj implies another provider.
+    //TODO: How to detect this condition?
+    resetMemoProvider(); //HACK
+
     //Normalized, or shallow clowning only copies an object's own enumerable
     //properties ignoring properties up the prototype chain
     const current = this.normalize(this);
