@@ -219,7 +219,6 @@ const Networks = {
   },
 
   matchesNetwork: async function (network_id, network_options) {
-    console.log("Networks matchesNetwork");
     const provider = Provider.create(network_options);
 
     const first = network_id + "";
