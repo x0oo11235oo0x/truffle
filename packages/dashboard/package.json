@@ -59,7 +59,7 @@
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
     "autoprefixer": "^9",
-    "axios": "0.26.1",
+    "axios": "1.6.0",
     "concurrently": "^6.5.1",
     "cpy-cli": "^3.1.1",
     "delay": "^5.0.0",
